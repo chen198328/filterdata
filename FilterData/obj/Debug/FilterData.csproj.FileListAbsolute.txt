@@ -1,0 +1,9 @@
+d:\用户目录\documents\visual studio 2013\Projects\FilterData\FilterData\bin\Debug\FilterData.exe.config
+d:\用户目录\documents\visual studio 2013\Projects\FilterData\FilterData\bin\Debug\FilterData.exe
+d:\用户目录\documents\visual studio 2013\Projects\FilterData\FilterData\bin\Debug\FilterData.pdb
+d:\用户目录\documents\visual studio 2013\Projects\FilterData\FilterData\obj\Debug\FilterData.csprojResolveAssemblyReference.cache
+d:\用户目录\documents\visual studio 2013\Projects\FilterData\FilterData\obj\Debug\FilterData.Form1.resources
+d:\用户目录\documents\visual studio 2013\Projects\FilterData\FilterData\obj\Debug\FilterData.Properties.Resources.resources
+d:\用户目录\documents\visual studio 2013\Projects\FilterData\FilterData\obj\Debug\FilterData.csproj.GenerateResource.Cache
+d:\用户目录\documents\visual studio 2013\Projects\FilterData\FilterData\obj\Debug\FilterData.exe
+d:\用户目录\documents\visual studio 2013\Projects\FilterData\FilterData\obj\Debug\FilterData.pdb

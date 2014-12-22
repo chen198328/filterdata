@@ -1,0 +1,153 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+
+namespace FilterData.Code
+{
+    public class EIConvert : Converter, IConvert
+    {
+
+        public void Read(string filename)
+        {
+            using (StreamReader reader = new StreamReader(filename))
+            {
+                string line = string.Empty;
+                ConvertPaper paper = null;
+                string field = string.Empty;
+                string prefix = string.Empty;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    if (line.Contains("Accession number:"))
+                    {
+                        paper = new ConvertPaper();
+                        paper.AccessionNumber = line.Substring("Accession number:".Length).Trim();
+                    }
+                    if (line.Contains("Title:"))
+                    {
+                        paper.Title = line.Substring("Title:".Length).Trim();
+                    }
+                    if (line.Contains("Authors:"))
+                    {
+                        paper.Author = line.Substring("Authors:".Length).Trim();
+                    }
+                    if (line.Contains("Author affiliation:"))
+                    {
+                        paper.Institutes.Add(line.Substring("Author affiliation:".Length).Trim());
+                    }
+
+                    if (line.Contains("Source title:"))
+                    {
+                        paper.Source = line.Substring("Source title:".Length).Trim();
+                    }
+                    if (line.Contains("Volume:"))
+                    {
+                        paper.Volume = line.Substring("Volume:".Length).Trim();
+                    }
+                    if (line.Contains("Issue:"))
+                    {
+                        paper.Issue = line.Substring("Issue:".Length).Trim();
+                    }
+                    if (line.Contains("Pages:"))
+                    {
+                        paper.BeginPage = line.Substring("Pages:".Length).Trim();
+                    }
+                    if (line.Contains("Publication year:"))
+                    {
+                        paper.Year = line.Substring("Publication year:".Length).Trim();
+                    }
+                    if (line.Contains("DOI:"))
+                    {
+                        paper.Doi = line.Substring("DOI:".Length).Trim();
+                    }
+                    if (line.Contains("Compilation and indexing terms"))
+                    {
+                        cache.Add(paper);
+                    }
+
+                }
+                reader.Close();
+            }
+        }
+        public override string ToHtml(List<string> years)
+        {
+            StringBuilder content = new StringBuilder();
+            if (years == null || years.Count == 0)
+            {
+                cache = (from p in cache orderby p.TotalCites descending select p).ToList<ConvertPaper>();
+            }
+            else
+            {
+                cache = (from p in cache where years.Contains(p.Year) orderby p.TotalCites descending select p).ToList<ConvertPaper>();
+            }
+            int index = 1;
+            foreach (var p in cache)
+            {
+                content.AppendLine("<tr>");
+                //序号
+                content.AppendLine("<td>" + (index++).ToString() + "</td>");
+                //标题
+                content.AppendLine("<td>");
+                content.AppendLine("<p><b>标题: </b>" + p.Title + "</p>");
+                //作者
+                if (!string.IsNullOrEmpty(p.Author))
+                {
+                    content.AppendLine("<p><b>作者: </b>" + p.Author + "</p>");
+                }
+                if (!string.IsNullOrEmpty(p.Keywords))
+                {
+                    content.AppendLine("<p><b>关键词: </b>" + p.Keywords + "</p>");
+                }
+                if (p.Institutes.Count > 0)
+                {
+                    //机构
+                    content.AppendLine("<p><b>机构: </b>");
+                    p.Institutes.ForEach(i =>
+                    {
+                        content.AppendLine(i);
+                    });
+                    content.AppendLine("</p>");
+                }
+
+                //来源
+                if (!string.IsNullOrEmpty(p.Source))
+                {
+                    content.AppendLine("<p><b>来源: </b>" + p.Source);
+                    if (!string.IsNullOrEmpty(p.Year))
+                    {
+                        content.AppendFormat(" 年: " + p.Year);
+                    }
+                    if (!string.IsNullOrEmpty(p.Volume))
+                    {
+                        content.AppendFormat(" 卷: " + p.Volume);
+                    }
+                    if (!string.IsNullOrEmpty(p.Issue))
+                    {
+                        content.AppendFormat(" 期: " + p.Issue);
+                    }
+                    if (!string.IsNullOrEmpty(p.BeginPage))
+                    {
+                        content.AppendFormat(" 页码: " + p.BeginPage);
+                    }
+                    content.AppendLine("</p>");
+                }
+                //DOI
+                if (!string.IsNullOrEmpty(p.Doi))
+                {
+                    content.AppendLine("<p><b>DOI:   </b><a target=\"_blank\" href=\"http://doi.org/" + p.Doi + "\">" + p.Doi + "</a></p>");
+                }
+                if (!string.IsNullOrEmpty(p.AccessionNumber))
+                {
+                    content.AppendLine("<p><b>入藏号: </b>" + p.AccessionNumber + "</p>");
+                }
+
+                content.AppendLine("</td>");
+                content.AppendLine("</tr>");
+
+            }
+            return content.ToString();
+        }
+    }
+}

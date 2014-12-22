@@ -1,0 +1,4 @@
+d:\用户目录\documents\visual studio 2013\Projects\FilterData\CsvHelper\bin\Release\CsvHelper.dll
+d:\用户目录\documents\visual studio 2013\Projects\FilterData\CsvHelper\bin\Release\CsvHelper.pdb
+d:\用户目录\documents\visual studio 2013\Projects\FilterData\CsvHelper\obj\Release\CsvHelper.dll
+d:\用户目录\documents\visual studio 2013\Projects\FilterData\CsvHelper\obj\Release\CsvHelper.pdb

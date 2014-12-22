@@ -1,0 +1,12 @@
+d:\用户目录\documents\visual studio 2013\Projects\FilterData\FilterTest\obj\Release\FilterTest.csprojResolveAssemblyReference.cache
+d:\用户目录\documents\visual studio 2013\Projects\FilterData\FilterTest\bin\Release\FilterTest.dll
+d:\用户目录\documents\visual studio 2013\Projects\FilterData\FilterTest\bin\Release\FilterTest.pdb
+d:\用户目录\documents\visual studio 2013\Projects\FilterData\FilterTest\bin\Release\FilterData.exe
+d:\用户目录\documents\visual studio 2013\Projects\FilterData\FilterTest\bin\Release\FilterData.pdb
+d:\用户目录\documents\visual studio 2013\Projects\FilterData\FilterTest\obj\Release\FilterTest.dll
+d:\用户目录\documents\visual studio 2013\Projects\FilterData\FilterTest\obj\Release\FilterTest.pdb
+d:\用户目录\documents\visual studio 2013\Projects\FilterData\FilterTest\bin\Release\CsvHelper.dll
+d:\用户目录\documents\visual studio 2013\Projects\FilterData\FilterTest\bin\Release\Newtonsoft.Json.dll
+d:\用户目录\documents\visual studio 2013\Projects\FilterData\FilterTest\bin\Release\CsvHelper.pdb
+d:\用户目录\documents\visual studio 2013\Projects\FilterData\FilterTest\bin\Release\CsvHelper.xml
+d:\用户目录\documents\visual studio 2013\Projects\FilterData\FilterTest\bin\Release\Newtonsoft.Json.xml
