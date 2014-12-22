@@ -47,11 +47,21 @@ namespace FilterData.Code
         public Dictionary<string, int> GetParentInstitutes(List<string> fields)
         {
             Dictionary<string, int> result = new Dictionary<string, int>();
+            Dictionary<string, string> distinct = new Dictionary<string, string>();
             foreach (var line in fields)
             {
                 if (!string.IsNullOrEmpty(line))
                 {
                     string key = GetParentInsitute(line);
+                    //此处用于处理一级机构去重问题
+                    if (distinct.ContainsKey(key.ToLower()))
+                    {
+                        key = distinct[key.ToLower()];
+                    }
+                    else
+                    {
+                        distinct[key.ToLower()] = key;
+                    }
                     if (result.ContainsKey(key))
                     {
                         result[key] += 1;

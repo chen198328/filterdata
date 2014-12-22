@@ -414,13 +414,21 @@ namespace FilterData
         /// <returns></returns>
         public DataTable Merge(DataTable maintable, DataTable updatetable)
         {
-            //foreach (DataRow item in updatetable.Rows)
-            //{
+
+            for (int index = 0; index < maintable.Rows.Count; index++)
+            {
+                maintable.Rows[index]["HashCode"] = (maintable.Rows[index]["一级机构"].ToString() + maintable.Rows[index]["二级机构"].ToString()).ToLower().GetHashCode();
+            }
+            for (int index = 0; index < maintable.Rows.Count; index++)
+            {
+                updatetable.Rows[index]["HashCode"] = (updatetable.Rows[index]["一级机构"].ToString() + updatetable.Rows[index]["二级机构"].ToString()).ToLower().GetHashCode();
+            }
+
             List<int> positions = new List<int>();
             for (int i = 0; i < updatetable.Rows.Count; i++)
             {
                 DataRow item = updatetable.Rows[i];
-                string query = "一级机构='" + item["一级机构"].ToString() + "' and 二级机构='" + item["二级机构"].ToString() + "'";
+                string query = string.Format("HashCode='{0}'", item["HashCode"]);
                 DataRow[] rows = maintable.Select(query);
                 if (rows.Length == 0)
                     continue;
@@ -543,28 +551,28 @@ namespace FilterData
                 UseWaitCursor = true;
                 List<string> Fields = new List<string>();
                 //List<string> Universities = new List<string>();
-                Dictionary<string, int> universities = new Dictionary<string, int>();
-                Dictionary<string, double> _universities = new Dictionary<string, double>();
+                // Dictionary<string, int> universities = new Dictionary<string, int>();
+                //Dictionary<string, double> _universities = new Dictionary<string, double>();
 
                 foreach (var file in memoryFilenames)
                 {
                     Fields.AddRange(ifilter.GetInstituteFields(file));
                 }
-                universities = ifilter.GetParentInstitutes(Fields);
+                // universities = ifilter.GetParentInstitutes(Fields);
                 memoryInstituteDataTable = ifilter.GetInstitutes(Fields);
                 tempInstituteDataTable = memoryInstituteDataTable.Copy();
 
-                string maxInstitute = universities.OrderByDescending(k => k.Value).First<KeyValuePair<string, int>>().Key;
-                Univerisities.Clear();
-                foreach (var item in universities)
-                {
-                    UniversityItem uitem = new UniversityItem();
-                    uitem.Name = item.Key;
-                    uitem.Frequence = item.Value;
-                    uitem.Similarity = maxInstitute.CalculateSimilarity(item.Key);
-                    Univerisities.Add(uitem);
-                }
-
+                //string maxInstitute = universities.OrderByDescending(k => k.Value).First<KeyValuePair<string, int>>().Key;
+                //Univerisities.Clear();
+                //foreach (var item in universities)
+                //{
+                //    UniversityItem uitem = new UniversityItem();
+                //    uitem.Name = item.Key;
+                //    uitem.Frequence = item.Value;
+                //    uitem.Similarity = maxInstitute.CalculateSimilarity(item.Key);
+                //    Univerisities.Add(uitem);
+                //}
+                Univerisities = GenerateUniversities(Fields);
                 this.BeginInvoke(bingUniversities, Univerisities);
                 this.BeginInvoke(bindInstiuteDataTable, memoryInstituteDataTable);
 
@@ -585,6 +593,27 @@ namespace FilterData
                 }
             });
         }
+        List<UniversityItem> GenerateUniversities(List<string> addresslist)
+        {
+            Dictionary<string, int> universities = new Dictionary<string, int>();
+            //用于去重使用
+            Dictionary<string, int> distinct = new Dictionary<string, int>();
+            universities = ifilter.GetParentInstitutes(addresslist);
+            string maxInstitute = universities.OrderByDescending(k => k.Value).First<KeyValuePair<string, int>>().Key;
+            List<UniversityItem> univs = new List<UniversityItem>();
+
+            foreach (var item in universities)
+            {
+                UniversityItem uitem = new UniversityItem();
+                uitem.Name = item.Key;
+                uitem.Frequence = item.Value;
+                uitem.Similarity = maxInstitute.CalculateSimilarity(item.Key);
+                univs.Add(uitem);
+            }
+            return univs;
+
+        }
+
 
 
         private void cbbSystem_SelectedIndexChanged(object sender, EventArgs e)
@@ -841,8 +870,21 @@ namespace FilterData
         public void UnivInstiTextChanged()
         {
             string insti = txtInstiFilter.Text.Trim();
+            string parentinsti = txtParentInstiFilter.Text.Trim();
+
             string rowfilter = string.Empty;
-            rowfilter = string.Format("二级机构 like '%{0}%'", insti);
+            if (parentinsti.Length == 0)
+            {
+                rowfilter = string.Format("二级机构 like '%{0}%'", insti);
+            }
+            else if (insti.Length == 0)
+            {
+                rowfilter = string.Format("一级机构 like '%{0}%'", parentinsti);
+            }
+            else
+            {
+                rowfilter = string.Format("一级机构 like '%{0}%' And 二级机构 like '%{1}%'", parentinsti, insti);
+            }
             BindInstituteDataTable(tempInstituteDataTable, rowfilter);
 
         }
@@ -852,6 +894,90 @@ namespace FilterData
             dgvInstituteDataTable.UseWaitCursor = false;
         }
 
+        private void btnFilterInstitute_Click(object sender, EventArgs e)
+        {
+            string filter = txtFilterInstitute.Text.Trim();
+            if (filter.Length == 0)
+            {
+                MessageBox.Show("请输入要筛选的关键词");
+                return;
+            }
+            #region 委托
+            Func<List<UniversityItem>, bool> bingUniversities = (universities) =>
+            {
+                BingUniversity(universities);
+                return true;
+            };
+            Func<DataTable, bool> bindInstiuteDataTable = (instituteDataTable) =>
+            {
+                BindInstituteDataTable(instituteDataTable);
+                return true;
+            };
+            #endregion
+
+            List<List<string>> filters = InitalFilter(filter);
+
+            List<string> Fields = new List<string>();
+
+            foreach (var file in memoryFilenames)
+            {
+                Fields.AddRange(ifilter.GetInstituteFields(file));
+            }
+            Fields = (from p in Fields where FilterInsitute(p, filters) select p).ToList<string>();
+
+            Univerisities = GenerateUniversities(Fields);
+            this.BeginInvoke(bingUniversities, Univerisities);
+
+
+            memoryInstituteDataTable = ifilter.GetInstitutes(Fields);
+            tempInstituteDataTable = memoryInstituteDataTable.Copy();
+            Univerisities = GenerateUniversities(Fields);
+            this.BeginInvoke(bindInstiuteDataTable, memoryInstituteDataTable);
+
+
+
+        }
+        private List<List<string>> InitalFilter(string filter)
+        {
+            string[] filters = filter.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
+            List<List<string>> _filters = new List<List<string>>();
+            foreach (var item in filters)
+            {
+                if (item.Contains(";"))
+                {
+                    string[] items = item.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
+                    List<string> _items = new List<string>();
+                    for (int index = 0; index < items.Length; index++)
+                    {
+                        _items.Add(items[index].Trim());
+                    }
+                    _filters.Add(_items);
+                }
+                else
+                {
+                    _filters.Add(new List<string>() { item.Trim() });
+                }
+            }
+            return _filters;
+        }
+        private bool FilterInsitute(string institute, List<List<string>> filters)
+        {
+            if (filters == null)
+                return false;
+            foreach (var p in filters)
+            {
+                bool result = true;
+                for (int i = 0; i < p.Count; i++)
+                {
+                    result = result && institute.Contains(p[i]);
+                }
+                if (result)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
     [Serializable]
     public class UniversityItem

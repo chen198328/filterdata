@@ -56,14 +56,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FilterData.exe" size="128512">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FilterData.exe" size="131584">
       <assemblyIdentity name="FilterData" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>tTHKQoC1Yr4InjEe9kzj+n2pWqaZsqQAP39XZNoeZSw=</dsig:DigestValue>
+        <dsig:DigestValue>nDMGKOzwwrpulSCviLzxTMM4wL7G6v0q5SMYdj6MT4M=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

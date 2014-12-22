@@ -40,18 +40,28 @@ namespace FilterData.Code
         public Dictionary<string, int> GetParentInstitutes(List<string> fields)
         {
             Dictionary<string, int> result = new Dictionary<string, int>();
+            Dictionary<string, string> distinct = new Dictionary<string, string>();
             foreach (var field in fields)
             {
                 if (!string.IsNullOrEmpty(field))
                 {
-                    string parentInstitute = GetParentInstitute(field);
-                    if (result.ContainsKey(parentInstitute))
+                    string key=GetParentInstitute(field);
+                    //此处用于处理一级机构去重问题
+                    if (distinct.ContainsKey(key.ToLower()))
                     {
-                        result[parentInstitute] += 1;
+                        key = distinct[key.ToLower()];
                     }
                     else
                     {
-                        result[parentInstitute] = 1;
+                        distinct[key.ToLower()] = key;
+                    }
+                    if (result.ContainsKey(key))
+                    {
+                        result[key] += 1;
+                    }
+                    else
+                    {
+                        result[key] = 1;
                     }
                 }
             }

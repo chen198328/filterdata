@@ -50,12 +50,14 @@
             this.txtSubjectFilter = new System.Windows.Forms.TextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnFilterInstitute = new System.Windows.Forms.Button();
+            this.txtFilterInstitute = new System.Windows.Forms.TextBox();
             this.btnCheckedOrder = new System.Windows.Forms.Button();
             this.txtSearchUniv = new System.Windows.Forms.TextBox();
             this.btnFrequenceOrder = new System.Windows.Forms.Button();
             this.btnStringOrder = new System.Windows.Forms.Button();
             this.btnSimilarityOrder = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.chbUniversities = new System.Windows.Forms.CheckedListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -73,18 +75,22 @@
             this.chbRemoveHistory = new System.Windows.Forms.CheckBox();
             this.txtRemove = new System.Windows.Forms.TextBox();
             this.btnRemoveInstituteAndDistinct = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.rtbLog = new System.Windows.Forms.RichTextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog_NormTable = new System.Windows.Forms.OpenFileDialog();
             this.fbdOutputData = new System.Windows.Forms.FolderBrowserDialog();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtParentInstiFilter = new System.Windows.Forms.TextBox();
             this.grpInputFile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
@@ -97,7 +103,7 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(372, 495);
+            this.label1.Location = new System.Drawing.Point(13, 500);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 12);
             this.label1.TabIndex = 29;
@@ -251,9 +257,9 @@
             // txtSubjectFilter
             // 
             this.txtSubjectFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtSubjectFilter.Location = new System.Drawing.Point(419, 490);
+            this.txtSubjectFilter.Location = new System.Drawing.Point(60, 495);
             this.txtSubjectFilter.Name = "txtSubjectFilter";
-            this.txtSubjectFilter.Size = new System.Drawing.Size(100, 21);
+            this.txtSubjectFilter.Size = new System.Drawing.Size(279, 21);
             this.txtSubjectFilter.TabIndex = 28;
             // 
             // splitContainer1
@@ -272,7 +278,9 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupBox1);
             this.splitContainer1.Panel2.Controls.Add(this.groupBox3);
-            this.splitContainer1.Size = new System.Drawing.Size(1342, 595);
+            this.splitContainer1.Panel2.Controls.Add(this.groupBox4);
+            this.splitContainer1.Panel2.Controls.Add(this.button5);
+            this.splitContainer1.Size = new System.Drawing.Size(1342, 683);
             this.splitContainer1.SplitterDistance = 297;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 23;
@@ -282,24 +290,52 @@
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.groupBox5);
             this.groupBox2.Controls.Add(this.btnCheckedOrder);
             this.groupBox2.Controls.Add(this.txtSearchUniv);
             this.groupBox2.Controls.Add(this.btnFrequenceOrder);
             this.groupBox2.Controls.Add(this.btnStringOrder);
             this.groupBox2.Controls.Add(this.btnSimilarityOrder);
-            this.groupBox2.Controls.Add(this.button5);
             this.groupBox2.Controls.Add(this.chbUniversities);
             this.groupBox2.Location = new System.Drawing.Point(9, 7);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(281, 585);
+            this.groupBox2.Size = new System.Drawing.Size(281, 673);
             this.groupBox2.TabIndex = 16;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "一级机构列表";
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.btnFilterInstitute);
+            this.groupBox5.Controls.Add(this.txtFilterInstitute);
+            this.groupBox5.Location = new System.Drawing.Point(8, 13);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(267, 46);
+            this.groupBox5.TabIndex = 36;
+            this.groupBox5.TabStop = false;
+            // 
+            // btnFilterInstitute
+            // 
+            this.btnFilterInstitute.Location = new System.Drawing.Point(204, 16);
+            this.btnFilterInstitute.Name = "btnFilterInstitute";
+            this.btnFilterInstitute.Size = new System.Drawing.Size(60, 23);
+            this.btnFilterInstitute.TabIndex = 37;
+            this.btnFilterInstitute.Text = "过滤";
+            this.btnFilterInstitute.UseVisualStyleBackColor = true;
+            this.btnFilterInstitute.Click += new System.EventHandler(this.btnFilterInstitute_Click);
+            // 
+            // txtFilterInstitute
+            // 
+            this.txtFilterInstitute.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtFilterInstitute.Location = new System.Drawing.Point(8, 17);
+            this.txtFilterInstitute.Name = "txtFilterInstitute";
+            this.txtFilterInstitute.Size = new System.Drawing.Size(191, 21);
+            this.txtFilterInstitute.TabIndex = 36;
+            // 
             // btnCheckedOrder
             // 
             this.btnCheckedOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnCheckedOrder.Location = new System.Drawing.Point(213, 547);
+            this.btnCheckedOrder.Location = new System.Drawing.Point(211, 605);
             this.btnCheckedOrder.Name = "btnCheckedOrder";
             this.btnCheckedOrder.Size = new System.Drawing.Size(60, 23);
             this.btnCheckedOrder.TabIndex = 32;
@@ -311,16 +347,16 @@
             // 
             this.txtSearchUniv.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearchUniv.Location = new System.Drawing.Point(9, 519);
+            this.txtSearchUniv.Location = new System.Drawing.Point(8, 643);
             this.txtSearchUniv.Name = "txtSearchUniv";
-            this.txtSearchUniv.Size = new System.Drawing.Size(266, 21);
+            this.txtSearchUniv.Size = new System.Drawing.Size(263, 21);
             this.txtSearchUniv.TabIndex = 31;
             this.txtSearchUniv.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // btnFrequenceOrder
             // 
             this.btnFrequenceOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnFrequenceOrder.Location = new System.Drawing.Point(9, 547);
+            this.btnFrequenceOrder.Location = new System.Drawing.Point(7, 605);
             this.btnFrequenceOrder.Name = "btnFrequenceOrder";
             this.btnFrequenceOrder.Size = new System.Drawing.Size(60, 23);
             this.btnFrequenceOrder.TabIndex = 15;
@@ -331,7 +367,7 @@
             // btnStringOrder
             // 
             this.btnStringOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnStringOrder.Location = new System.Drawing.Point(145, 547);
+            this.btnStringOrder.Location = new System.Drawing.Point(143, 605);
             this.btnStringOrder.Name = "btnStringOrder";
             this.btnStringOrder.Size = new System.Drawing.Size(60, 23);
             this.btnStringOrder.TabIndex = 14;
@@ -342,25 +378,13 @@
             // btnSimilarityOrder
             // 
             this.btnSimilarityOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSimilarityOrder.Location = new System.Drawing.Point(77, 547);
+            this.btnSimilarityOrder.Location = new System.Drawing.Point(75, 605);
             this.btnSimilarityOrder.Name = "btnSimilarityOrder";
             this.btnSimilarityOrder.Size = new System.Drawing.Size(60, 23);
             this.btnSimilarityOrder.TabIndex = 13;
             this.btnSimilarityOrder.Text = "相似度";
             this.btnSimilarityOrder.UseVisualStyleBackColor = true;
             this.btnSimilarityOrder.Click += new System.EventHandler(this.btnSimilarity_Click_2);
-            // 
-            // button5
-            // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Location = new System.Drawing.Point(31, 16);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(222, 23);
-            this.button5.TabIndex = 12;
-            this.button5.Text = "机构遴选";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.btnSelect_Click);
             // 
             // chbUniversities
             // 
@@ -370,9 +394,9 @@
             this.chbUniversities.CheckOnClick = true;
             this.chbUniversities.FormattingEnabled = true;
             this.chbUniversities.HorizontalScrollbar = true;
-            this.chbUniversities.Location = new System.Drawing.Point(9, 45);
+            this.chbUniversities.Location = new System.Drawing.Point(8, 64);
             this.chbUniversities.Name = "chbUniversities";
-            this.chbUniversities.Size = new System.Drawing.Size(266, 468);
+            this.chbUniversities.Size = new System.Drawing.Size(266, 532);
             this.chbUniversities.TabIndex = 4;
             // 
             // groupBox1
@@ -380,6 +404,8 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.txtParentInstiFilter);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtInstiFilter);
             this.groupBox1.Controls.Add(this.label1);
@@ -387,36 +413,36 @@
             this.groupBox1.Controls.Add(this.btnSaveData);
             this.groupBox1.Controls.Add(this.bindingNavigator1);
             this.groupBox1.Controls.Add(this.dgvInstituteDataTable);
-            this.groupBox1.Location = new System.Drawing.Point(3, 76);
+            this.groupBox1.Location = new System.Drawing.Point(5, 70);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1009, 522);
+            this.groupBox1.Size = new System.Drawing.Size(1021, 525);
             this.groupBox1.TabIndex = 28;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "机构列表";
             // 
             // label3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 493);
+            this.label3.Location = new System.Drawing.Point(581, 18);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 12);
+            this.label3.Size = new System.Drawing.Size(77, 12);
             this.label3.TabIndex = 34;
-            this.label3.Text = "二级筛选";
+            this.label3.Text = "二级机构筛选";
             // 
             // txtInstiFilter
             // 
-            this.txtInstiFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtInstiFilter.Location = new System.Drawing.Point(72, 488);
+            this.txtInstiFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtInstiFilter.Location = new System.Drawing.Point(664, 15);
             this.txtInstiFilter.Name = "txtInstiFilter";
-            this.txtInstiFilter.Size = new System.Drawing.Size(260, 21);
+            this.txtInstiFilter.Size = new System.Drawing.Size(338, 21);
             this.txtInstiFilter.TabIndex = 33;
             this.txtInstiFilter.TextChanged += new System.EventHandler(this.txtInstiFilter_TextChanged);
             // 
             // btnSaveData
             // 
             this.btnSaveData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSaveData.Location = new System.Drawing.Point(529, 485);
+            this.btnSaveData.Location = new System.Drawing.Point(355, 486);
             this.btnSaveData.Name = "btnSaveData";
             this.btnSaveData.Size = new System.Drawing.Size(229, 33);
             this.btnSaveData.TabIndex = 27;
@@ -443,7 +469,7 @@
             this.bindingNavigatorSeparator2,
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem});
-            this.bindingNavigator1.Location = new System.Drawing.Point(751, 488);
+            this.bindingNavigator1.Location = new System.Drawing.Point(763, 491);
             this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.bindingNavigator1.MoveNextItem = this.bindingNavigatorMoveNextItem;
@@ -469,10 +495,10 @@
             this.NormCategory,
             this.NormSchool,
             this.NormUniv});
-            this.dgvInstituteDataTable.Location = new System.Drawing.Point(6, 15);
+            this.dgvInstituteDataTable.Location = new System.Drawing.Point(6, 42);
             this.dgvInstituteDataTable.Name = "dgvInstituteDataTable";
             this.dgvInstituteDataTable.RowTemplate.Height = 23;
-            this.dgvInstituteDataTable.Size = new System.Drawing.Size(997, 467);
+            this.dgvInstituteDataTable.Size = new System.Drawing.Size(1009, 443);
             this.dgvInstituteDataTable.TabIndex = 0;
             this.dgvInstituteDataTable.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInstituteDataTable_CellValueChanged);
             this.dgvInstituteDataTable.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvInstituteDataTable_DataBindingComplete);
@@ -522,9 +548,9 @@
             this.groupBox3.Controls.Add(this.chbRemoveHistory);
             this.groupBox3.Controls.Add(this.txtRemove);
             this.groupBox3.Controls.Add(this.btnRemoveInstituteAndDistinct);
-            this.groupBox3.Location = new System.Drawing.Point(3, 4);
+            this.groupBox3.Location = new System.Drawing.Point(297, 4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1003, 60);
+            this.groupBox3.Size = new System.Drawing.Size(729, 60);
             this.groupBox3.TabIndex = 29;
             this.groupBox3.TabStop = false;
             // 
@@ -532,7 +558,7 @@
             // 
             this.chbRemoveHistory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chbRemoveHistory.AutoSize = true;
-            this.chbRemoveHistory.Location = new System.Drawing.Point(905, 21);
+            this.chbRemoveHistory.Location = new System.Drawing.Point(631, 21);
             this.chbRemoveHistory.Name = "chbRemoveHistory";
             this.chbRemoveHistory.Size = new System.Drawing.Size(72, 16);
             this.chbRemoveHistory.TabIndex = 18;
@@ -543,15 +569,15 @@
             // 
             this.txtRemove.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtRemove.Location = new System.Drawing.Point(15, 20);
+            this.txtRemove.Location = new System.Drawing.Point(17, 20);
             this.txtRemove.Name = "txtRemove";
-            this.txtRemove.Size = new System.Drawing.Size(700, 21);
+            this.txtRemove.Size = new System.Drawing.Size(424, 21);
             this.txtRemove.TabIndex = 16;
             // 
             // btnRemoveInstituteAndDistinct
             // 
             this.btnRemoveInstituteAndDistinct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRemoveInstituteAndDistinct.Location = new System.Drawing.Point(730, 18);
+            this.btnRemoveInstituteAndDistinct.Location = new System.Drawing.Point(456, 18);
             this.btnRemoveInstituteAndDistinct.Name = "btnRemoveInstituteAndDistinct";
             this.btnRemoveInstituteAndDistinct.Size = new System.Drawing.Size(152, 23);
             this.btnRemoveInstituteAndDistinct.TabIndex = 17;
@@ -559,14 +585,24 @@
             this.btnRemoveInstituteAndDistinct.UseVisualStyleBackColor = true;
             this.btnRemoveInstituteAndDistinct.Click += new System.EventHandler(this.btnRemoveDistinct_Click);
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(12, 20);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(268, 38);
+            this.button5.TabIndex = 12;
+            this.button5.Text = "加载二级机构";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.btnSelect_Click);
+            // 
             // groupBox4
             // 
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.rtbLog);
-            this.groupBox4.Location = new System.Drawing.Point(10, 644);
+            this.groupBox4.Location = new System.Drawing.Point(5, 595);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1320, 85);
+            this.groupBox4.Size = new System.Drawing.Size(1021, 85);
             this.groupBox4.TabIndex = 24;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "操作日志";
@@ -579,7 +615,7 @@
             this.rtbLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rtbLog.Location = new System.Drawing.Point(9, 20);
             this.rtbLog.Name = "rtbLog";
-            this.rtbLog.Size = new System.Drawing.Size(1305, 56);
+            this.rtbLog.Size = new System.Drawing.Size(1006, 56);
             this.rtbLog.TabIndex = 29;
             this.rtbLog.Text = "";
             // 
@@ -591,6 +627,23 @@
             // 
             this.openFileDialog_NormTable.FileName = "openFileDialog2";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 22);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(77, 12);
+            this.label2.TabIndex = 36;
+            this.label2.Text = "一级机构筛选";
+            // 
+            // txtParentInstiFilter
+            // 
+            this.txtParentInstiFilter.Location = new System.Drawing.Point(92, 15);
+            this.txtParentInstiFilter.Name = "txtParentInstiFilter";
+            this.txtParentInstiFilter.Size = new System.Drawing.Size(338, 21);
+            this.txtParentInstiFilter.TabIndex = 35;
+            this.txtParentInstiFilter.TextChanged += new System.EventHandler(this.txtInstiFilter_TextChanged);
+            // 
             // FilterInstitute
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -598,7 +651,6 @@
             this.ClientSize = new System.Drawing.Size(1344, 741);
             this.Controls.Add(this.grpInputFile);
             this.Controls.Add(this.splitContainer1);
-            this.Controls.Add(this.groupBox4);
             this.Name = "FilterInstitute";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "机构数据挑选程序";
@@ -612,6 +664,8 @@
             this.splitContainer1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
@@ -676,6 +730,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NormCategory;
         private System.Windows.Forms.DataGridViewTextBoxColumn NormSchool;
         private System.Windows.Forms.DataGridViewTextBoxColumn NormUniv;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.TextBox txtFilterInstitute;
+        private System.Windows.Forms.Button btnFilterInstitute;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtParentInstiFilter;
 
     }
 }

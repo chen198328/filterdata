@@ -9,13 +9,13 @@ namespace FilterData.Code
     {
         Regex regChinse = new Regex("[\u4e00-\u9fa5]");
         public Filter() { }
-        public System.Data.DataTable SelectInstitutes(System.Data.DataTable institutes, List<string> parentInstitues)
+        public virtual System.Data.DataTable SelectInstitutes(System.Data.DataTable institutes, List<string> parentInstitues)
         {
             DataTable result = institutes.Clone();
             foreach (DataRow row in institutes.Rows)
             {
                 string parentInstitute = row[0].ToString();
-                if (parentInstitues.Contains(parentInstitute))
+                if (StringUtil.ContainsIgnoreCase(parentInstitues, parentInstitute))
                 {
                     result.Rows.Add(row.ItemArray);
                 }

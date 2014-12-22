@@ -125,6 +125,7 @@
     <Compile Include="Code\MedlineFilter.cs" />
     <Compile Include="Code\NormalizeTable.cs" />
     <Compile Include="Code\StringSimilarityExtension.cs" />
+    <Compile Include="Code\StringUtil.cs" />
     <Compile Include="Code\WosFilter.cs" />
     <Compile Include="FilterInstitute.cs">
       <SubType>Form</SubType>

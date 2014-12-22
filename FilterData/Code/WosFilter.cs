@@ -24,24 +24,35 @@ namespace FilterData.Code
         public Dictionary<string, int> GetParentInstitutes(List<string> fields)
         {
             Dictionary<string, int> Universities = new Dictionary<string, int>();
+            Dictionary<string, string> distinct = new Dictionary<string, string>();
             foreach (var field in fields)
             {
                 if (!string.IsNullOrEmpty(field))
                 {
                     int index = field.IndexOf(',');
-                    string temp = string.Empty;
+                    string key = string.Empty;
                     if (index != -1)
                     {
-                        temp = field.Substring(0, index).Trim();
+                        key = field.Substring(0, index).Trim();
                     }
-                    else { temp = field; }
-                    if (Universities.ContainsKey(temp))
+                    else { key = field; }
+
+                    //此处用于处理一级机构去重问题
+                    if (distinct.ContainsKey(key.ToLower()))
                     {
-                        Universities[temp] += 1;
+                        key = distinct[key.ToLower()];
                     }
                     else
                     {
-                        Universities[temp] = 1;
+                        distinct[key.ToLower()] = key;
+                    }
+                    if (Universities.ContainsKey(key))
+                    {
+                        Universities[key] += 1;
+                    }
+                    else
+                    {
+                        Universities[key] = 1;
                     }
                 }
             }
@@ -75,13 +86,13 @@ namespace FilterData.Code
             return result;
         }
 
-        public System.Data.DataTable SelectInstitutes(System.Data.DataTable institutes, List<string> parentInstitues)
+        public override System.Data.DataTable SelectInstitutes(System.Data.DataTable institutes, List<string> parentInstitues)
         {
             DataTable result = institutes.Clone();
             foreach (DataRow row in institutes.Rows)
             {
                 string parentInstitute = row[0].ToString();
-                if (parentInstitues.Contains(parentInstitute))
+                if (StringUtil.ContainsIgnoreCase(parentInstitues, parentInstitute))
                 {
                     result.Rows.Add(row.ItemArray);
                 }
