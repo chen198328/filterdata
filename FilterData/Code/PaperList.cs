@@ -354,7 +354,9 @@ namespace FilterData.Code
                     fileformat = GetFileFomat(filename);
                 ireader = GetFileReader(fileformat);
                 CopyRight = ireader.ReadCopyRight(reader);
-                paperlist.AddRange(ireader.Read(reader));
+                List<Paper> templist = ireader.Read(reader);
+                paperlist.AddRange(templist);
+
                 reader.Close();
             }
         }
@@ -682,8 +684,8 @@ namespace FilterData.Code
                 }
                 if (line.Length == 0 && content.Length > 50)
                 {
-                    int start = 0;
-                    int end = 0;
+                    //int start = 0;
+                    //int end = 0;
                     //while ((start = institute.IndexOf('(')) != -1 && (end = institute.IndexOf(')')) != -1)
                     //{
                     //    institute = institute.Remove(start, end - start + 1);
@@ -694,6 +696,20 @@ namespace FilterData.Code
                     content.Clear();
                     institute = string.Empty;
                 }
+            }
+            if (!string.IsNullOrEmpty(institute))
+            {
+                //int start = 0;
+                //int end = 0;
+                //while ((start = institute.IndexOf('(')) != -1 && (end = institute.IndexOf(')')) != -1)
+                //{
+                //    institute = institute.Remove(start, end - start + 1);
+                //}
+                Regex regx = new Regex(@"\([0-9]+\)");
+                institute = regx.Replace(institute, "");
+                paperlist.Add(new Paper() { Institutes = institute.Split(';').ToList<string>(), FullText = content.ToString() });
+                content.Clear();
+                institute = string.Empty;
             }
             return paperlist;
         }

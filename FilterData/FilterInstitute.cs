@@ -134,6 +134,11 @@ namespace FilterData
         }
         public void BindInstituteDataTable(DataTable table, string rowfilter = null)
         {
+            try
+            {
+                table.Columns.Remove("HashCode");
+            }
+            catch (Exception) { }
             DataView view = table.DefaultView;
             if (!string.IsNullOrEmpty(rowfilter))
             {
@@ -173,7 +178,7 @@ namespace FilterData
 
         private void btnRemoveDistinct_Click(object sender, EventArgs e)
         {
-            if (dgvInstituteDataTable.Rows.Count == 0)
+            if (tempInstituteDataTable.Rows.Count == 0)
             {
                 MessageBox.Show("数据为空,无效操作");
                 return;
@@ -199,7 +204,41 @@ namespace FilterData
                 }
             }
             //bool isRemove = remove.Length > 0 ? true : false;
-            DataTable instituteData = GetDataTableFromGridView(dgvInstituteDataTable);
+            //DataTable instituteData = GetDataTableFromGridView(dgvInstituteDataTable);
+            DataTable instituteData = tempInstituteDataTable.Copy();
+
+
+            #region 去重
+            //Dictionary<string, int> distinct = new Dictionary<string, int>();
+            //DataRowCollection removerows = new DataRowCollection();
+            //foreach (DataRow row in instituteData.Rows)
+            //{
+            //    string temp = row[1].ToString().Trim();
+            //    if (removehistory.Count != 0)
+            //    {
+            //        removehistory.ForEach(p =>
+            //        {
+            //            temp = temp.Replace(p, "");
+            //        });
+            //    }
+            //    row[1] = temp;
+
+            //    string key = row[0].ToString() + row[1].ToString();
+            //    key = key.Replace("&", "and");
+            //    if (distinct.ContainsKey(key))
+            //    {
+            //        removerows.Add(row);
+
+            //    }
+            //    else
+            //    {
+            //        distinct[key] = int.Parse(row["id"].ToString());
+            //    }
+            //}
+
+
+            #endregion
+
             List<string> tempList = new List<string>();
             foreach (DataRow row in instituteData.Rows)
             {
@@ -419,7 +458,7 @@ namespace FilterData
             {
                 maintable.Rows[index]["HashCode"] = (maintable.Rows[index]["一级机构"].ToString() + maintable.Rows[index]["二级机构"].ToString()).ToLower().GetHashCode();
             }
-            for (int index = 0; index < maintable.Rows.Count; index++)
+            for (int index = 0; index < updatetable.Rows.Count; index++)
             {
                 updatetable.Rows[index]["HashCode"] = (updatetable.Rows[index]["一级机构"].ToString() + updatetable.Rows[index]["二级机构"].ToString()).ToLower().GetHashCode();
             }
@@ -474,11 +513,24 @@ namespace FilterData
             }
             for (int index = positions.Count - 1; index >= 0; index--)
             {
-                updatetable.Rows.RemoveAt(index);
+                updatetable.Rows.RemoveAt(positions[index]);
             }
+            //if (updatetable.Rows.Count > 0)
+            //{
+            //    maintable.Merge(updatetable);
+            //}
             if (updatetable.Rows.Count > 0)
             {
-                maintable.Merge(updatetable);
+                for (int index = 0; index < updatetable.Rows.Count; index++)
+                {
+                    DataRow row = maintable.NewRow();
+                    row["一级机构"] = updatetable.Rows[index]["一级机构"];
+                    row["二级机构"] = updatetable.Rows[index]["二级机构"];
+                    row["学科规范"] = updatetable.Rows[index]["学科规范"];
+                    row["学校规范"] = updatetable.Rows[index]["学校规范"];
+                    row["学校规范"] = updatetable.Rows[index]["学校规范"];
+                    maintable.Rows.Add(row);
+                }
             }
             return maintable;
         }
@@ -599,18 +651,25 @@ namespace FilterData
             //用于去重使用
             Dictionary<string, int> distinct = new Dictionary<string, int>();
             universities = ifilter.GetParentInstitutes(addresslist);
-            string maxInstitute = universities.OrderByDescending(k => k.Value).First<KeyValuePair<string, int>>().Key;
-            List<UniversityItem> univs = new List<UniversityItem>();
-
-            foreach (var item in universities)
+            if (universities.Count > 0)
             {
-                UniversityItem uitem = new UniversityItem();
-                uitem.Name = item.Key;
-                uitem.Frequence = item.Value;
-                uitem.Similarity = maxInstitute.CalculateSimilarity(item.Key);
-                univs.Add(uitem);
+                string maxInstitute = universities.OrderByDescending(k => k.Value).First<KeyValuePair<string, int>>().Key;
+                List<UniversityItem> univs = new List<UniversityItem>();
+
+                foreach (var item in universities)
+                {
+                    UniversityItem uitem = new UniversityItem();
+                    uitem.Name = item.Key;
+                    uitem.Frequence = item.Value;
+                    uitem.Similarity = maxInstitute.CalculateSimilarity(item.Key);
+                    univs.Add(uitem);
+                }
+                return univs;
             }
-            return univs;
+            else
+            {
+                return new List<UniversityItem>();
+            }
 
         }
 
@@ -624,9 +683,6 @@ namespace FilterData
                 case "Wos(sci,ssci,cpci)":
                     ifilter = new WosFilter();
                     fileformat = "endnote";
-                    break;
-                case "Medline":
-                    ifilter = new MedlineFilter();
                     fileformat = "endnote";
                     break;
                 case "EI":
@@ -651,7 +707,12 @@ namespace FilterData
                 MessageBox.Show("数据为空,无效操作");
                 return;
             }
-
+            string filter = txtFilterInstitute.Text.Trim();
+            List<List<string>> filters = new List<List<string>>();
+            if (cbxFilterInstitute.Checked)
+            {
+                filters = InitalFilter(filter);
+            }
             DialogResult dialogresult = fbdOutputData.ShowDialog();
             if (dialogresult == DialogResult.OK)
             {
@@ -682,7 +743,13 @@ namespace FilterData
                 foreach (var file in memoryFilenames)
                 {
                     paperlist.Clear();
+
                     paperlist.ReadFile(file, fileformat);
+
+                    if (filters != null && filters.Count > 0)
+                    {
+                        paperlist = FilterPaperList(paperlist, filters);
+                    }
                     paperlist.MatchPaperList();
                     if (paperlist.paperlist.Count == 0)
                     {
@@ -708,7 +775,26 @@ namespace FilterData
 
 
 
+        private PaperList FilterPaperList(PaperList paperlist, List<List<string>> filters)
+        {
+            foreach (Paper paper in paperlist.paperlist)
+            {
+                List<string> institutes = new List<string>();
+                for (int index = 0; index < paper.Institutes.Count; index++)
+                {
+                    for (int iindex = 0; iindex < filters.Count; iindex++)
+                    {
+                        if (StringUtil.Contains(paper.Institutes[index], filters[iindex]))
+                        {
+                            institutes.Add(paper.Institutes[index]);
+                        }
+                    }
+                }
+                paper.Institutes = institutes;
+            }
+            return paperlist;
 
+        }
 
         #region 一级机构排序
         private void btnFrequence_Click(object sender, EventArgs e)
@@ -774,6 +860,15 @@ namespace FilterData
         public void SetFilenames(string filenames)
         {
             txtFileNames.Text = filenames;
+        }
+        public string GetFilterInstitute()
+        {
+
+            return txtFilterInstitute.Text.Trim();
+        }
+        public void SetFilterInstitute(string filter)
+        {
+            txtFilterInstitute.Text = filter;
         }
         /// <summary>
         /// 使得Universities的被选与chbUniversities保持一致
@@ -897,11 +992,7 @@ namespace FilterData
         private void btnFilterInstitute_Click(object sender, EventArgs e)
         {
             string filter = txtFilterInstitute.Text.Trim();
-            if (filter.Length == 0)
-            {
-                MessageBox.Show("请输入要筛选的关键词");
-                return;
-            }
+
             #region 委托
             Func<List<UniversityItem>, bool> bingUniversities = (universities) =>
             {
@@ -915,15 +1006,23 @@ namespace FilterData
             };
             #endregion
 
-            List<List<string>> filters = InitalFilter(filter);
+
+
 
             List<string> Fields = new List<string>();
-
             foreach (var file in memoryFilenames)
             {
                 Fields.AddRange(ifilter.GetInstituteFields(file));
             }
-            Fields = (from p in Fields where FilterInsitute(p, filters) select p).ToList<string>();
+
+            if (filter.Length > 0)
+            {
+                List<List<string>> filters = InitalFilter(filter);
+                Fields = (from p in Fields where FilterInsitute(p, filters) select p).ToList<string>();
+            }
+
+
+
 
             Univerisities = GenerateUniversities(Fields);
             this.BeginInvoke(bingUniversities, Univerisities);
@@ -966,15 +1065,7 @@ namespace FilterData
                 return false;
             foreach (var p in filters)
             {
-                bool result = true;
-                for (int i = 0; i < p.Count; i++)
-                {
-                    result = result && institute.Contains(p[i]);
-                }
-                if (result)
-                {
-                    return true;
-                }
+                return StringUtil.Contains(institute, p);
             }
             return false;
         }

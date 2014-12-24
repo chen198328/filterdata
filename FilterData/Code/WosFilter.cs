@@ -92,7 +92,7 @@ namespace FilterData.Code
             foreach (DataRow row in institutes.Rows)
             {
                 string parentInstitute = row[0].ToString();
-                if (StringUtil.ContainsIgnoreCase(parentInstitues, parentInstitute))
+                if (StringUtil.EqualIgnoreCase(parentInstitues, parentInstitute))
                 {
                     result.Rows.Add(row.ItemArray);
                 }

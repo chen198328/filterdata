@@ -7,3 +7,32 @@ d:\用户目录\documents\visual studio 2013\Projects\FilterData\FilterData\obj\
 d:\用户目录\documents\visual studio 2013\Projects\FilterData\FilterData\obj\Debug\FilterData.csproj.GenerateResource.Cache
 d:\用户目录\documents\visual studio 2013\Projects\FilterData\FilterData\obj\Debug\FilterData.exe
 d:\用户目录\documents\visual studio 2013\Projects\FilterData\FilterData\obj\Debug\FilterData.pdb
+F:\信息组\程序\filterdata\FilterData\bin\Debug\FilterData.exe.config
+F:\信息组\程序\filterdata\FilterData\obj\Debug\FilterData.exe
+F:\信息组\程序\filterdata\FilterData\obj\Debug\FilterData.pdb
+F:\信息组\程序\filterdata\FilterData\bin\Debug\log.txt
+F:\信息组\程序\filterdata\FilterData\bin\Debug\template.html
+F:\信息组\程序\filterdata\FilterData\bin\Debug\template_code.html
+F:\信息组\程序\filterdata\FilterData\bin\Debug\FilterData.exe.manifest
+F:\信息组\程序\filterdata\FilterData\bin\Debug\FilterData.application
+F:\信息组\程序\filterdata\FilterData\bin\Debug\FilterData.exe
+F:\信息组\程序\filterdata\FilterData\bin\Debug\FilterData.pdb
+F:\信息组\程序\filterdata\FilterData\bin\Debug\CsvHelper.dll
+F:\信息组\程序\filterdata\FilterData\bin\Debug\Newtonsoft.Json.dll
+F:\信息组\程序\filterdata\FilterData\bin\Debug\CsvHelper.pdb
+F:\信息组\程序\filterdata\FilterData\bin\Debug\CsvHelper.xml
+F:\信息组\程序\filterdata\FilterData\bin\Debug\Newtonsoft.Json.xml
+F:\信息组\程序\filterdata\FilterData\obj\Debug\FilterData.csprojResolveAssemblyReference.cache
+F:\信息组\程序\filterdata\FilterData\obj\Debug\FilterData.FilterInstitute.resources
+F:\信息组\程序\filterdata\FilterData\obj\Debug\FilterData.Form1.resources
+F:\信息组\程序\filterdata\FilterData\obj\Debug\FilterData.Form2.resources
+F:\信息组\程序\filterdata\FilterData\obj\Debug\FilterData.HistoryList.resources
+F:\信息组\程序\filterdata\FilterData\obj\Debug\FilterData.HistoryListChange.resources
+F:\信息组\程序\filterdata\FilterData\obj\Debug\FilterData.Main.resources
+F:\信息组\程序\filterdata\FilterData\obj\Debug\FilterData.Properties.Resources.resources
+F:\信息组\程序\filterdata\FilterData\obj\Debug\FilterData.ToHtml.resources
+F:\信息组\程序\filterdata\FilterData\obj\Debug\FilterData.UpdateLog.resources
+F:\信息组\程序\filterdata\FilterData\obj\Debug\FilterData.csproj.GenerateResource.Cache
+F:\信息组\程序\filterdata\FilterData\obj\Debug\FilterData.TrustInfo.xml
+F:\信息组\程序\filterdata\FilterData\obj\Debug\FilterData.exe.manifest
+F:\信息组\程序\filterdata\FilterData\obj\Debug\FilterData.application

@@ -56,14 +56,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FilterData.exe" size="131584">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FilterData.exe" size="133120">
       <assemblyIdentity name="FilterData" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>nDMGKOzwwrpulSCviLzxTMM4wL7G6v0q5SMYdj6MT4M=</dsig:DigestValue>
+        <dsig:DigestValue>blB5VxbUMKDYe4OzPHjfR5lc5gvd41Sn1C+TmEleDVI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -88,13 +88,13 @@
       <dsig:DigestValue>nNtOEHdmPzvNJqiH8RRTw2EVg41Ic1ekYPE42EAa1t8=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="log.txt" size="1383">
+  <file name="log.txt" size="1636">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>HqniorE1lv4geN2v1ltDts0677l17Ua3iS69vu3iGmQ=</dsig:DigestValue>
+      <dsig:DigestValue>0YiwSGChLZbeOROlr2ZmExwii5eJ8sksiVzxA633wPY=</dsig:DigestValue>
     </hash>
   </file>
   <file name="template.html" size="3576">

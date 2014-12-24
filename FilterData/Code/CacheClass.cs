@@ -35,6 +35,10 @@ namespace FilterData.Code
         public bool isOpen { set; get; }
         public IFilter ifilter { set; get; }
         public string Fileformat { set; get; }
+        /// <summary>
+        /// 一级机构过滤
+        /// </summary>
+        public string FilterInstiute { set; get; }
         public CacheClass() { }
     }
 }

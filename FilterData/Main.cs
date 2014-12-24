@@ -305,6 +305,7 @@ namespace FilterData
                     form.BindInstituteDataTable(cache.InsituteTable);
                     form.SetFilenames(cache.Filenames);
                     form.SetSystemFormat(cache.Type);
+                    form.SetFilterInstitute(cache.FilterInstiute);
                     #endregion
 
                     规范表ToolStripMenuItem.Enabled = true;
@@ -338,7 +339,7 @@ namespace FilterData
                 cache.isOpen = form.isOpen;
                 cache.Type = form.GetSystemFormat();
                 cache.Filenames = form.GetFilenames();
-
+                cache.FilterInstiute = form.GetFilterInstitute();
                 DataGridView dgvInstituteDataTable = form.dgvInstituteDataTable;
                 //cache.InsituteTable = form.GetDataTableFromGridView(dgvInstituteDataTable);
                 cache.InsituteTable = form.tempInstituteDataTable;
@@ -431,7 +432,7 @@ namespace FilterData
             };
             Task task = new Task(() =>
             {
-                bool result = (bool)this.Invoke(Validate); 
+                bool result = (bool)this.Invoke(Validate);
                 if (result)
                 {
                     this.Invoke(ShowUpdateForm);
