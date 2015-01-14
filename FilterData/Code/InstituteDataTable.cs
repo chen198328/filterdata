@@ -16,7 +16,6 @@ namespace FilterData.Code
             DataColumn Subject = new DataColumn("学科规范", typeof(string));
             DataColumn Standard = new DataColumn("学院规范", typeof(string));
             DataColumn UniversityCh = new DataColumn("学校规范", typeof(string));
-            DataColumn HashCode = new DataColumn("HashCode", typeof(int));
             DataColumn id = new DataColumn("id", typeof(int));
             id.AutoIncrement = true;
             id.AutoIncrementSeed = 1;
@@ -28,7 +27,6 @@ namespace FilterData.Code
             InstituteTable.Columns.Add(Standard);
             InstituteTable.Columns.Add(UniversityCh);
             InstituteTable.Columns.Add(id);
-            InstituteTable.Columns.Add(HashCode);
             #endregion
             InstituteTable.PrimaryKey = new DataColumn[] { id };
             return InstituteTable;

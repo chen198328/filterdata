@@ -68,8 +68,9 @@ namespace FilterData.Code
                         if (institutecount == 2)
                         {
                             space = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+
                         }
-                        content.AppendLine(space+i + "<br/>");
+                        content.AppendLine(space + i.Trim() + "<br/>");
 
                     });
                     content.AppendLine("</p>");
@@ -77,14 +78,14 @@ namespace FilterData.Code
                 else if (p.Institutes.Count > 1)
                 {
                     content.AppendLine("<div class=\"main\">");
-                    content.AppendLine("<p class=\"mainf\"><b>机构：</b>");
+                    content.AppendLine("<p class=\"mainf\"><b>机构: </b>");
                     int pos = 0;
                     p.Institutes.ForEach(i =>
                     {
                         string space = string.Empty;
                         if (pos > 0)
                         {
-                            space = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+                            space = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 
                         }
                         pos++;

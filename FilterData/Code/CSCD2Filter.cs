@@ -74,6 +74,12 @@ namespace FilterData.Code
         }
         public string GetParentInsitute(string line)
         {
+            //*部分数据后面以,结束，影响数据切分
+            if (line.Trim().EndsWith(","))
+            {
+                line = line.Trim();
+                line = line.Substring(0, line.Length - 2);
+            }
             #region
             if (base.isChinese(line))
             {
@@ -103,6 +109,7 @@ namespace FilterData.Code
 
             foreach (var field in fields)
             {
+
                 if (!string.IsNullOrEmpty(field))
                 {
                     DataRow dr = table.NewRow();

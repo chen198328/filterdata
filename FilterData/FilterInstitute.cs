@@ -134,11 +134,6 @@ namespace FilterData
         }
         public void BindInstituteDataTable(DataTable table, string rowfilter = null)
         {
-            try
-            {
-                table.Columns.Remove("HashCode");
-            }
-            catch (Exception) { }
             DataView view = table.DefaultView;
             if (!string.IsNullOrEmpty(rowfilter))
             {
@@ -453,7 +448,14 @@ namespace FilterData
         /// <returns></returns>
         public DataTable Merge(DataTable maintable, DataTable updatetable)
         {
-
+            if (!maintable.Columns.Contains("Hashcode"))
+            {
+                maintable.Columns.Add(new DataColumn("Hashcode"));
+            }
+            if (!updatetable.Columns.Contains("Hashcode"))
+            {
+                updatetable.Columns.Add(new DataColumn("HashCode"));
+            }
             for (int index = 0; index < maintable.Rows.Count; index++)
             {
                 maintable.Rows[index]["HashCode"] = (maintable.Rows[index]["一级机构"].ToString() + maintable.Rows[index]["二级机构"].ToString()).ToLower().GetHashCode();
@@ -531,6 +533,13 @@ namespace FilterData
                     row["学校规范"] = updatetable.Rows[index]["学校规范"];
                     maintable.Rows.Add(row);
                 }
+            }
+            if (maintable.Columns.Contains("HashCode"))
+            {
+                maintable.Columns.Remove("HashCode");
+            } if (updatetable.Columns.Contains("HashCode"))
+            {
+                updatetable.Columns.Remove("HashCode");
             }
             return maintable;
         }

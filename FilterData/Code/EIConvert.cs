@@ -106,7 +106,7 @@ namespace FilterData.Code
                     content.AppendLine("<p><b>机构: </b>");
                     p.Institutes.ForEach(i =>
                     {
-                        content.AppendLine(i);
+                        content.AppendLine(i.Trim());
                     });
                     content.AppendLine("</p>");
                 }

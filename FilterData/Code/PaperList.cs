@@ -296,7 +296,12 @@ namespace FilterData.Code
 
         public int Compare(string x, string y)
         {
-            return x.Length > y.Length ? 1 : -1;
+            if (x.Length > y.Length)
+                return 1;
+            else if (x.Length < y.Length)
+                return -1;
+            else return 0;
+
         }
     }
     /// <summary>
