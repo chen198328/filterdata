@@ -36,3 +36,6 @@ F:\信息组\程序\filterdata\FilterData\obj\Debug\FilterData.csproj.GenerateRe
 F:\信息组\程序\filterdata\FilterData\obj\Debug\FilterData.TrustInfo.xml
 F:\信息组\程序\filterdata\FilterData\obj\Debug\FilterData.exe.manifest
 F:\信息组\程序\filterdata\FilterData\obj\Debug\FilterData.application
+F:\信息组\程序\filterdata\FilterData\bin\Debug\FilterInstitute.resx
+F:\信息组\程序\filterdata\FilterData\bin\Debug\FilterInstitute.cs
+F:\信息组\程序\filterdata\FilterData\bin\Debug\FilterInstitute.Designer.cs
