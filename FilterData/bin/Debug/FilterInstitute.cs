@@ -1091,7 +1091,7 @@ namespace FilterData
 
         private void btnFilterInstitute_MouseHover(object sender, EventArgs e)
         {
-            string message = "机构字段筛选，格式[a,b]|c表示筛选字段中同时满足包含a和b的记录，或者包含c的记录";
+            string message = "机构字段筛选，格式[a,-b]|c表示筛选字段中同时满足包含a和不包含b的记录，或者包含c的记录";
             ShowTitleTip(message, btnFilterInstitute);
         }
         private void ShowTitleTip(string message,IWin32Window window)

@@ -29,22 +29,50 @@ namespace FilterData.Code
         /// <param name="list"></param>
         /// <param name="item"></param>
         /// <returns></returns>
-        public static bool Contains(string line, List<string> items, bool ignoarecase=true)
+        public static bool Contains(string line, List<string> items, bool ignoarecase = true)
         {
             if (ignoarecase)
             {
                 for (int index = 0; index < items.Count; index++)
                 {
-                    if (line.ToLower().Contains(items[index].ToLower()))
-                        return true;
+                    string p = items[index].Trim();
+                    if (p.StartsWith("-"))
+                    {
+                        p = p.Substring(1);
+                        if (!line.ToLower().Contains(p))
+                        {
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        if (line.ToLower().Contains(p))
+                        {
+                            return true;
+                        }
+                    }
                 }
             }
             else
             {
                 for (int index = 0; index < items.Count; index++)
                 {
-                    if (line.Contains(items[index]))
-                        return true;
+                    string p = items[index].Trim();
+                    if (p.StartsWith("-"))
+                    {
+                        p = p.Substring(1);
+                        if (!line.Contains(p))
+                        {
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        if (line.Contains(p))
+                        {
+                            return true;
+                        }
+                    }
                 }
             }
 

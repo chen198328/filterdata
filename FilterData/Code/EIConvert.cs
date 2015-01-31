@@ -32,10 +32,33 @@ namespace FilterData.Code
                     if (line.Contains("Authors:"))
                     {
                         paper.Author = line.Substring("Authors:".Length).Trim();
+                        if (!string.IsNullOrEmpty(paper.Author))
+                        {
+                            string[] authors = paper.Author.Split(';');
+                            if (authors != null)
+                            {
+                                paper.AuthorCount = authors.Length;
+                            }
+                        }
                     }
                     if (line.Contains("Author affiliation:"))
                     {
-                        paper.Institutes.Add(line.Substring("Author affiliation:".Length).Trim());
+                        string institutes = line.Substring("Author affiliation:".Length).Trim();
+                        string[] _institutes = institutes.Split(';');
+                        List<string> instituteslist = new List<string>();
+                        if (_institutes != null && _institutes.Length > 1)
+                        {
+                            for (int index = 0; index < _institutes.Length; index++)
+                            {
+                                if (_institutes[index].Trim().Length > 0)
+                                {
+                                    string temp = _institutes[index].Trim();
+                                    paper.Institutes.Add(temp.Trim());
+
+                                }
+                            }
+
+                        }
                     }
 
                     if (line.Contains("Source title:"))
@@ -92,24 +115,89 @@ namespace FilterData.Code
                 content.AppendLine("<td>");
                 content.AppendLine("<p><b>标题: </b>" + p.Title + "</p>");
                 //作者
+                //if (!string.IsNullOrEmpty(p.Author))
+                //{
+                //    content.AppendLine("<p><b>作者: </b>" + p.Author + "</p>");
+                //}
+
+                //作者
                 if (!string.IsNullOrEmpty(p.Author))
                 {
-                    content.AppendLine("<p><b>作者: </b>" + p.Author + "</p>");
+                    if (p.AuthorCount < 20)
+                    {
+                        content.AppendLine("<p><b>作者: </b>" + p.Author + "</p>");
+                    }
+                    else
+                    {
+                        content.AppendLine("<div class=\"main\">");
+                        content.AppendLine("<p class=\"mainf\"><b>作者：</b>");
+                        content.AppendLine(p.Author);
+                        content.AppendLine("</p>");
+                        content.AppendLine("</div>");
+                        content.AppendLine("<div class=\"intro\">");
+
+                        content.AppendLine("<span class=\"key\">展开(" + p.AuthorCount + ")</span>");
+                        content.AppendLine("<div style=\"clear:both; height:0; overflow:hidden;\"></div>");
+                        content.AppendLine("</div>");
+                    }
                 }
                 if (!string.IsNullOrEmpty(p.Keywords))
                 {
                     content.AppendLine("<p><b>关键词: </b>" + p.Keywords + "</p>");
                 }
-                if (p.Institutes.Count > 0)
+                //if (p.Institutes.Count > 0)
+                //{
+                //    //机构
+                //    content.AppendLine("<p><b>机构: </b>");
+                //    p.Institutes.ForEach(i =>
+                //    {
+                //        content.AppendLine(i.Trim());
+                //    });
+                //    content.AppendLine("</p>");
+                //}
+                int institutecount = 0;
+                if (p.Institutes.Count <= 2)
                 {
                     //机构
                     content.AppendLine("<p><b>机构: </b>");
+                    string space = string.Empty;
                     p.Institutes.ForEach(i =>
                     {
-                        content.AppendLine(i.Trim());
+                        institutecount++;
+                        if (institutecount == 2)
+                        {
+                            space = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+
+                        }
+                        content.AppendLine(space + i.Trim() + "<br/>");
+
                     });
                     content.AppendLine("</p>");
                 }
+                else if (p.Institutes.Count > 1)
+                {
+                    content.AppendLine("<div class=\"main\">");
+                    content.AppendLine("<p class=\"mainf\"><b>机构: </b>");
+                    int pos = 0;
+                    p.Institutes.ForEach(i =>
+                    {
+                        string space = string.Empty;
+                        if (pos > 0)
+                        {
+                            space = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+
+                        }
+                        pos++;
+                        content.AppendLine(space + i.Trim() + "<br/>");
+                    });
+                    content.AppendLine("</p>");
+                    content.AppendLine("</div>");
+                    content.AppendLine("<div class=\"intro\">");
+                    content.AppendLine("<span class=\"key\">展开(" + p.Institutes.Count + ")</span>");
+                    content.AppendLine("<div style=\"clear:both; height:0; overflow:hidden;\"></div>");
+                    content.AppendLine("</div>");
+                }
+
 
                 //来源
                 if (!string.IsNullOrEmpty(p.Source))

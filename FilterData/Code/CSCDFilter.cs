@@ -8,10 +8,14 @@ using System.Text.RegularExpressions;
 using System.Data;
 namespace FilterData.Code
 {
+    /// <summary>
+    /// 此filter主要用于ciw格式的cscd，现在系统不再使用
+    /// </summary>
     [Serializable]
     public class CSCDFilter : EndNoteFilter, IFilter
     {
-        Regex reg = new Regex(@"([\u4e00-\u9fa5]*?学校)|([\u4e00-\u9fa5]*?大学)|([\u4e00-\u9fa5]*?学院)|([\u4e00-\u9fa5]*?科学院)|([\u4e00-\u9fa5]*?科院)|([\u4e00-\u9fa5]*?公司|([\u4e00-\u9fa5]*?厂)|([\u4e00-\u9fa5]*?集团))");
+        //Regex reg = new Regex(@"([\u4e00-\u9fa5]*?学校)|([\u4e00-\u9fa5]*?大学)|([\u4e00-\u9fa5]*?学院)|([\u4e00-\u9fa5]*?科学院)|([\u4e00-\u9fa5]*?科院)|([\u4e00-\u9fa5]*?公司|([\u4e00-\u9fa5]*?厂)|([\u4e00-\u9fa5]*?集团))");
+        Regex reg = new Regex(@"([\u4e00-\u9fa5]|\(|\)|\（|\）)*?(学校|大学|学院|科学院|科院|公司|厂|集团)");//中英文括号
         /// <summary>
         /// 获取机构字段（移除作者信息）
         /// </summary>
