@@ -46,7 +46,7 @@ namespace FilterData.Code
                         string institutes = line.Substring("Author affiliation:".Length).Trim();
                         string[] _institutes = institutes.Split(';');
                         List<string> instituteslist = new List<string>();
-                        if (_institutes != null && _institutes.Length > 1)
+                        if (_institutes != null && _institutes.Length > 0)
                         {
                             for (int index = 0; index < _institutes.Length; index++)
                             {
@@ -156,7 +156,7 @@ namespace FilterData.Code
                 //    content.AppendLine("</p>");
                 //}
                 int institutecount = 0;
-                if (p.Institutes.Count <= 2)
+                if (p.Institutes.Count <= 2 && p.Institutes.Count > 0)
                 {
                     //机构
                     content.AppendLine("<p><b>机构: </b>");
@@ -174,7 +174,7 @@ namespace FilterData.Code
                     });
                     content.AppendLine("</p>");
                 }
-                else if (p.Institutes.Count > 1)
+                else
                 {
                     content.AppendLine("<div class=\"main\">");
                     content.AppendLine("<p class=\"mainf\"><b>机构: </b>");

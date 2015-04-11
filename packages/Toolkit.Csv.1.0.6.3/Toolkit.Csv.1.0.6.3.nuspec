@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Toolkit.Csv</id>
+    <version>1.0.6.3</version>
+    <authors>Nick Smith,  Vincent Simonetti</authors>
+    <owners>Nick Smith,  Vincent Simonetti</owners>
+    <projectUrl>http://toolkitcsv.codeplex.com/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Toolkit for parsing CSV into generic datatypes for simple data handling. Adheres to CSV specification for full compatibility. Implemented with FsLex and FsYacc.</description>
+    <releaseNotes />
+    <copyright>Copyright 2012 Eikos Partners</copyright>
+    <tags>CSV</tags>
+    <dependencies>
+      <dependency id="FSPowerPack.Community" version="3.0.0.0" />
+      <dependency id="Rx-Main" version="2.1.30214.0" />
+    </dependencies>
+  </metadata>
+</package>

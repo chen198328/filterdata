@@ -224,6 +224,7 @@
             "Medline",
             "EI",
             "CSCD",
+            "CSCD(ciw)",
             "CSSCI"});
             this.cbbSystem.Location = new System.Drawing.Point(12, 14);
             this.cbbSystem.Name = "cbbSystem";
@@ -419,7 +420,7 @@
             this.groupBox1.Controls.Add(this.dgvInstituteDataTable);
             this.groupBox1.Location = new System.Drawing.Point(5, 70);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1018, 525);
+            this.groupBox1.Size = new System.Drawing.Size(1017, 525);
             this.groupBox1.TabIndex = 28;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "机构列表";
@@ -457,7 +458,7 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(578, 18);
+            this.label3.Location = new System.Drawing.Point(577, 18);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 12);
             this.label3.TabIndex = 34;
@@ -466,7 +467,7 @@
             // txtInstiFilter
             // 
             this.txtInstiFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtInstiFilter.Location = new System.Drawing.Point(661, 15);
+            this.txtInstiFilter.Location = new System.Drawing.Point(660, 15);
             this.txtInstiFilter.Name = "txtInstiFilter";
             this.txtInstiFilter.Size = new System.Drawing.Size(338, 21);
             this.txtInstiFilter.TabIndex = 33;
@@ -502,7 +503,7 @@
             this.bindingNavigatorSeparator2,
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem});
-            this.bindingNavigator1.Location = new System.Drawing.Point(760, 491);
+            this.bindingNavigator1.Location = new System.Drawing.Point(759, 491);
             this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.bindingNavigator1.MoveNextItem = this.bindingNavigatorMoveNextItem;
@@ -531,7 +532,7 @@
             this.dgvInstituteDataTable.Location = new System.Drawing.Point(6, 42);
             this.dgvInstituteDataTable.Name = "dgvInstituteDataTable";
             this.dgvInstituteDataTable.RowTemplate.Height = 23;
-            this.dgvInstituteDataTable.Size = new System.Drawing.Size(1006, 443);
+            this.dgvInstituteDataTable.Size = new System.Drawing.Size(1005, 443);
             this.dgvInstituteDataTable.TabIndex = 0;
             this.dgvInstituteDataTable.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInstituteDataTable_CellValueChanged);
             this.dgvInstituteDataTable.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvInstituteDataTable_DataBindingComplete);
@@ -583,7 +584,7 @@
             this.groupBox3.Controls.Add(this.btnRemoveInstituteAndDistinct);
             this.groupBox3.Location = new System.Drawing.Point(297, 4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(726, 60);
+            this.groupBox3.Size = new System.Drawing.Size(725, 60);
             this.groupBox3.TabIndex = 29;
             this.groupBox3.TabStop = false;
             // 
@@ -591,7 +592,7 @@
             // 
             this.chbRemoveHistory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chbRemoveHistory.AutoSize = true;
-            this.chbRemoveHistory.Location = new System.Drawing.Point(628, 21);
+            this.chbRemoveHistory.Location = new System.Drawing.Point(627, 21);
             this.chbRemoveHistory.Name = "chbRemoveHistory";
             this.chbRemoveHistory.Size = new System.Drawing.Size(72, 16);
             this.chbRemoveHistory.TabIndex = 18;
@@ -604,13 +605,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtRemove.Location = new System.Drawing.Point(17, 20);
             this.txtRemove.Name = "txtRemove";
-            this.txtRemove.Size = new System.Drawing.Size(421, 21);
+            this.txtRemove.Size = new System.Drawing.Size(420, 21);
             this.txtRemove.TabIndex = 16;
             // 
             // btnRemoveInstituteAndDistinct
             // 
             this.btnRemoveInstituteAndDistinct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRemoveInstituteAndDistinct.Location = new System.Drawing.Point(453, 18);
+            this.btnRemoveInstituteAndDistinct.Location = new System.Drawing.Point(452, 18);
             this.btnRemoveInstituteAndDistinct.Name = "btnRemoveInstituteAndDistinct";
             this.btnRemoveInstituteAndDistinct.Size = new System.Drawing.Size(152, 23);
             this.btnRemoveInstituteAndDistinct.TabIndex = 17;
@@ -625,7 +626,7 @@
             this.groupBox4.Controls.Add(this.rtbLog);
             this.groupBox4.Location = new System.Drawing.Point(5, 595);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1018, 85);
+            this.groupBox4.Size = new System.Drawing.Size(1017, 85);
             this.groupBox4.TabIndex = 24;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "操作日志";
@@ -638,7 +639,7 @@
             this.rtbLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rtbLog.Location = new System.Drawing.Point(9, 20);
             this.rtbLog.Name = "rtbLog";
-            this.rtbLog.Size = new System.Drawing.Size(1003, 56);
+            this.rtbLog.Size = new System.Drawing.Size(1002, 56);
             this.rtbLog.TabIndex = 29;
             this.rtbLog.Text = "";
             // 

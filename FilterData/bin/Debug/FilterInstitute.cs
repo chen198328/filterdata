@@ -702,6 +702,10 @@ namespace FilterData
                     ifilter = new CSCD2Filter();
                     fileformat = "cscd";
                     break;
+                case "CSCD(ciw)":
+                    ifilter = new CSCDFilter();
+                    fileformat = "endnote";
+                    break;
                 case "CSSCI":
                     ifilter = new CSSCIFilter();
                     fileformat = "cssci";
@@ -1094,7 +1098,7 @@ namespace FilterData
             string message = "机构字段筛选，格式[a,-b]|c表示筛选字段中同时满足包含a和不包含b的记录，或者包含c的记录";
             ShowTitleTip(message, btnFilterInstitute);
         }
-        private void ShowTitleTip(string message,IWin32Window window)
+        private void ShowTitleTip(string message, IWin32Window window)
         {
             toolTip1.ToolTipTitle = "功能说明";
             toolTip1.Show(message, window);

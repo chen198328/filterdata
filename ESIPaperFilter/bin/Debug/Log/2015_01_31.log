@@ -1,0 +1,131 @@
+﻿#Software: ESIPaperFilter
+#ProcessID: 6700
+#AppDomain: ESIPaperFilter.vshost.exe
+#FileName: F:\信息组\程序\filterdata\ESIPaperFilter\bin\Debug\ESIPaperFilter.vshost.exe
+#BaseDirectory: F:\信息组\程序\filterdata\ESIPaperFilter\bin\Debug\
+#ApplicationType: WinForm
+#CLR: 4.0.30319.0
+#OS: Windows 7 Service Pack 1, Administrator/SDWM-20140605GJ
+#Date: 2015-01-31
+#Fields: Time ThreadID IsPoolThread ThreadName Message
+16:44:05.705 9 N - NewLife.Core v4.6.2014.0907 Build 2014-09-11 12:00:42
+16:44:05.724 9 N - NewLife.XCode v8.13.2014.0720 Build 2014-09-11 11:59:46
+16:44:05.724 9 N - 使用数据库方式：独占，加大缓存权重
+16:44:05.837 9 N - XCode.Exceptions.XCodeException: 请在使用数据库前设置[ESIPaper]连接字符串
+   在 XCode.DataAccessLayer.DAL..ctor(String connName) 位置 c:\X\Src\XCode\DataAccessLayer\DAL.cs:行号 33
+   在 XCode.DataAccessLayer.DAL.Create(String connName) 位置 c:\X\Src\XCode\DataAccessLayer\DAL.cs:行号 54
+   在 XCode.EntitySession`1.get_Dal() 位置 c:\X\Src\XCode\Entity\EntitySession.cs:行号 93
+   在 XCode.Entity`1.Meta.FormatName(String name) 位置 c:\X\Src\XCode\Entity\Entity_Meta.cs:行号 245
+   在 XCode.Entity`1.MakeCondition(FieldItem field, Object value, String action) 位置 c:\X\Src\XCode\Entity\Entity.cs:行号 1177
+   在 XCode.Entity`1.MakeCondition(String[] names, Object[] values, String action) 位置 c:\X\Src\XCode\Entity\Entity.cs:行号 1150
+   在 XCode.Entity`1.FindCount(String[] names, Object[] values) 位置 c:\X\Src\XCode\Entity\Entity.cs:行号 895
+   在 ESIPaperFilter.Form1.button3_Click(Object sender, EventArgs e) 位置 f:\信息组\程序\filterdata\ESIPaperFilter\Form1.cs:行号 88
+   在 System.Windows.Forms.Control.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   在 System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   在 System.Windows.Forms.Control.WndProc(Message& m)
+   在 System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   在 System.Windows.Forms.Button.WndProc(Message& m)
+   在 System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   在 System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   在 System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   在 System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
+   在 System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   在 System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   在 System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   在 System.Windows.Forms.Application.Run(Form mainForm)
+   在 ESIPaperFilter.Program.Main() 位置 f:\信息组\程序\filterdata\ESIPaperFilter\Program.cs:行号 19
+   在 System.AppDomain._nExecuteAssembly(RuntimeAssembly assembly, String[] args)
+   在 System.AppDomain.ExecuteAssembly(String assemblyFile, Evidence assemblySecurity, String[] args)
+   在 Microsoft.VisualStudio.HostingProcess.HostProc.RunUsersAssembly()
+   在 System.Threading.ThreadHelper.ThreadStart_Context(Object state)
+   在 System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   在 System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   在 System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)
+   在 System.Threading.ThreadHelper.ThreadStart()
+16:44:05.837 9 N - 异常退出！
+
+#Software: ESIPaperFilter
+#ProcessID: 9952
+#AppDomain: ESIPaperFilter.vshost.exe
+#FileName: F:\信息组\程序\filterdata\ESIPaperFilter\bin\Debug\ESIPaperFilter.vshost.exe
+#BaseDirectory: F:\信息组\程序\filterdata\ESIPaperFilter\bin\Debug\
+#ApplicationType: WinForm
+#CLR: 4.0.30319.0
+#OS: Windows 7 Service Pack 1, Administrator/SDWM-20140605GJ
+#Date: 2015-01-31
+#Fields: Time ThreadID IsPoolThread ThreadName Message
+16:46:31.582 10 N - NewLife.Core v4.6.2014.0907 Build 2014-09-11 12:00:42
+16:46:31.592 10 N - NewLife.XCode v8.13.2014.0720 Build 2014-09-11 11:59:46
+16:46:31.592 10 N - 使用数据库方式：独占，加大缓存权重
+
+#Software: ESIPaperFilter
+#ProcessID: 9440
+#AppDomain: ESIPaperFilter.vshost.exe
+#FileName: F:\信息组\程序\filterdata\ESIPaperFilter\bin\Debug\ESIPaperFilter.vshost.exe
+#BaseDirectory: F:\信息组\程序\filterdata\ESIPaperFilter\bin\Debug\
+#ApplicationType: WinForm
+#CLR: 4.0.30319.0
+#OS: Windows 7 Service Pack 1, Administrator/SDWM-20140605GJ
+#Date: 2015-01-31
+#Fields: Time ThreadID IsPoolThread ThreadName Message
+16:57:47.506 10 N - NewLife.Core v4.6.2014.0907 Build 2014-09-11 12:00:42
+16:57:47.519 10 N - NewLife.XCode v8.13.2014.0720 Build 2014-09-11 11:59:46
+16:57:47.519 10 N - 使用数据库方式：独占，加大缓存权重
+16:57:47.743 10 N - System.Collections.Generic.KeyNotFoundException: 给定关键字不在字典中。
+   在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 ESIPaperFilter.Form1.button3_Click(Object sender, EventArgs e) 位置 f:\信息组\程序\filterdata\ESIPaperFilter\Form1.cs:行号 112
+   在 System.Windows.Forms.Control.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   在 System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   在 System.Windows.Forms.Control.WndProc(Message& m)
+   在 System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   在 System.Windows.Forms.Button.WndProc(Message& m)
+   在 System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   在 System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   在 System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   在 System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
+   在 System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   在 System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   在 System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   在 System.Windows.Forms.Application.Run(Form mainForm)
+   在 ESIPaperFilter.Program.Main() 位置 f:\信息组\程序\filterdata\ESIPaperFilter\Program.cs:行号 19
+   在 System.AppDomain._nExecuteAssembly(RuntimeAssembly assembly, String[] args)
+   在 System.AppDomain.ExecuteAssembly(String assemblyFile, Evidence assemblySecurity, String[] args)
+   在 Microsoft.VisualStudio.HostingProcess.HostProc.RunUsersAssembly()
+   在 System.Threading.ThreadHelper.ThreadStart_Context(Object state)
+   在 System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   在 System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   在 System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)
+   在 System.Threading.ThreadHelper.ThreadStart()
+16:57:47.744 10 N - 异常退出！
+
+#Software: ESIPaperFilter
+#ProcessID: 4144
+#AppDomain: ESIPaperFilter.vshost.exe
+#FileName: F:\信息组\程序\filterdata\ESIPaperFilter\bin\Debug\ESIPaperFilter.vshost.exe
+#BaseDirectory: F:\信息组\程序\filterdata\ESIPaperFilter\bin\Debug\
+#ApplicationType: WinForm
+#CLR: 4.0.30319.0
+#OS: Windows 7 Service Pack 1, Administrator/SDWM-20140605GJ
+#Date: 2015-01-31
+#Fields: Time ThreadID IsPoolThread ThreadName Message
+16:58:44.954 9 N - NewLife.Core v4.6.2014.0907 Build 2014-09-11 12:00:42
+16:58:44.963 9 N - NewLife.XCode v8.13.2014.0720 Build 2014-09-11 11:59:46
+16:58:44.963 9 N - 使用数据库方式：独占，加大缓存权重
+
+#Software: ESIPaperFilter
+#ProcessID: 4024
+#AppDomain: ESIPaperFilter.vshost.exe
+#FileName: F:\信息组\程序\filterdata\ESIPaperFilter\bin\Debug\ESIPaperFilter.vshost.exe
+#BaseDirectory: F:\信息组\程序\filterdata\ESIPaperFilter\bin\Debug\
+#ApplicationType: WinForm
+#CLR: 4.0.30319.0
+#OS: Windows 7 Service Pack 1, Administrator/SDWM-20140605GJ
+#Date: 2015-01-31
+#Fields: Time ThreadID IsPoolThread ThreadName Message
+17:07:58.908 10 N - NewLife.Core v4.6.2014.0907 Build 2014-09-11 12:00:42
+17:07:58.918 10 N - NewLife.XCode v8.13.2014.0720 Build 2014-09-11 11:59:46
+17:07:58.918 10 N - 使用数据库方式：独占，加大缓存权重

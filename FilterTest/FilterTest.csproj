@@ -56,6 +56,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ESIPaperFilter\ESIPaperFilter.csproj">
+      <Project>{88c9e7da-35c4-4868-8aa7-6389ceef106c}</Project>
+      <Name>ESIPaperFilter</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FilterData\FilterData.csproj">
       <Project>{6e8051be-dcfe-4aca-9bab-c68da344c4de}</Project>
       <Name>FilterData</Name>

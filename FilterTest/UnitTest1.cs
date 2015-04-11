@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using FilterData.Code;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
+using ESIPaperFilter.Code;
 namespace FilterTest
 {
     [TestClass]
@@ -18,7 +18,10 @@ namespace FilterTest
             //    string copyright = ireader.ReadCopyRight(reader);
             //    List<Paper> paperlist = ireader.Read(reader);
             //}
-          
+            string path = @"C:\Program Files\feiq\Recv Files\SCIE\中国地质大学CPCI-S（1-500）.ciw";
+            List<Paper> paperlist = Paper.Read(path);
+            Assert.AreEqual(paperlist.Count, 500);
+
         }
     }
 }
