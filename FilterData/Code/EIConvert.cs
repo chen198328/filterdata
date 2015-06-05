@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-
+using System.Text.RegularExpressions;
 namespace FilterData.Code
 {
     public class EIConvert : Converter, IConvert
     {
-
+        private Regex regSplitor = new Regex(@"\([0-9]*\)");
         public void Read(string filename)
         {
             using (StreamReader reader = new StreamReader(filename))
@@ -44,7 +44,20 @@ namespace FilterData.Code
                     if (line.Contains("Author affiliation:"))
                     {
                         string institutes = line.Substring("Author affiliation:".Length).Trim();
-                        string[] _institutes = institutes.Split(';');
+                        //机构需要根据 (1)这种标记匹配
+                        MatchCollection matches = regSplitor.Matches(institutes);
+                        List<string> splitors = new List<string>();
+                        foreach (Match match in matches)
+                        {
+                            splitors.Add(match.Value);
+                        }
+
+                        //string[] _institutes = institutes.Split(';');
+                        string[] _institutes = institutes.Split(splitors.ToArray(), StringSplitOptions.RemoveEmptyEntries);
+                        for (int index = 0; index < _institutes.Length; index++)
+                        {
+                            _institutes[index] = "(" + (index + 1) + ")" + _institutes[index];
+                        }
                         List<string> instituteslist = new List<string>();
                         if (_institutes != null && _institutes.Length > 0)
                         {

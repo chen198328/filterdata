@@ -454,7 +454,11 @@ namespace FilterData.Code
     /// <summary>
     /// EndNote格式的数据读取
     /// </summary>
-    public class EndNoteReader : IReader
+    public class Reader
+    {
+        public Reader() { }
+    }
+    public class EndNoteReader : Reader, IReader
     {
         public EndNoteReader() { }
 
@@ -527,18 +531,25 @@ namespace FilterData.Code
                     //中英文分开
                     if (regChinse.IsMatch(institute))
                     {
-                        if (institute.ToLower().Contains(univinsti.Name.ToLower()))
+                        //Chinese
+                        //if (institute.ToLower().Contains(univinsti.Name.ToLower()))
+                        //{
+                        //    foreach (var insti in univinsti.Insitutes)
+                        //    {
+                        //        if (institute.ToLower().Contains(insti.ToLower()))
+                        //            return true;
+                        //    }
+                        //}
+                        foreach (var insti in univinsti.Insitutes)
                         {
-                            foreach (var insti in univinsti.Insitutes)
-                            {
-                                if (institute.ToLower().Contains(insti.ToLower()))
-                                    return true;
-                            }
+                            string temp = univinsti.Name + insti;
+                            if (institute.Contains(temp))
+                                return true;
                         }
                     }
                     else
                     {
-
+                        //English
                         if (institute.ToLower().EndsWith(univinsti.Name.ToLower()) || institute.ToLower().Contains(univinsti.Name.ToLower() + ","))
                         {
                             foreach (var insti in univinsti.Insitutes)
@@ -556,7 +567,7 @@ namespace FilterData.Code
     /// <summary>
     /// CSSCI格式的数据读取
     /// </summary>
-    public class CSSCIReader : IReader
+    public class CSSCIReader : Reader, IReader
     {
         public string ReadCopyRight(StreamReader reader)
         {
@@ -598,20 +609,27 @@ namespace FilterData.Code
             {
                 foreach (var univinsti in univinstiList)
                 {
-                    if (institute.ToLower().Contains(univinsti.Name.ToLower()))
+                    //if (institute.ToLower().Contains(univinsti.Name.ToLower()))
+                    //{
+                    //    foreach (var insti in univinsti.Insitutes)
+                    //    {
+                    //        if (institute.ToLower().Contains(insti.ToLower()))
+                    //            return true;
+                    //    }
+                    //}
+
+                    foreach (var insti in univinsti.Insitutes)
                     {
-                        foreach (var insti in univinsti.Insitutes)
-                        {
-                            if (institute.ToLower().Contains(insti.ToLower()))
-                                return true;
-                        }
+                        string temp = univinsti.Name + insti;
+                        if (institute.Contains(temp))
+                            return true;
                     }
                 }
             }
             return false;
         }
     }
-    public class CSCDReader : IReader
+    public class CSCDReader : Reader, IReader
     {
 
         public List<Paper> Read(StreamReader reader)
@@ -654,13 +672,19 @@ namespace FilterData.Code
             {
                 foreach (var univinsti in univinstiList)
                 {
-                    if (institute.ToLower().Contains(univinsti.Name.ToLower()))
+                    //if (institute.ToLower().Contains(univinsti.Name.ToLower()))
+                    //{
+                    //    foreach (var insti in univinsti.Insitutes)
+                    //    {
+                    //        if (institute.ToLower().Contains(insti.ToLower()))
+                    //            return true;
+                    //    }
+                    //}
+                    foreach (var insti in univinsti.Insitutes)
                     {
-                        foreach (var insti in univinsti.Insitutes)
-                        {
-                            if (institute.ToLower().Contains(insti.ToLower()))
-                                return true;
-                        }
+                        string temp = univinsti.Name + insti;
+                        if (institute.Contains(temp))
+                            return true;
                     }
                 }
             }
@@ -670,7 +694,7 @@ namespace FilterData.Code
     /// <summary>
     /// EI格式的数据读取
     /// </summary>
-    public class EIReader : IReader
+    public class EIReader : Reader, IReader
     {
 
         public List<Paper> Read(StreamReader reader)
