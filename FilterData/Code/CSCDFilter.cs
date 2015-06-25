@@ -63,6 +63,7 @@ namespace FilterData.Code
         }
         public string GetParentInsitute(string line)
         {
+            line = line.Trim(',');
             if (base.isChinese(line))
             {
                 //匹配
