@@ -73,10 +73,20 @@ namespace ESIPaperFilter
         }
         private List<Paper> GetPapers(string[] filenames)
         {
+            Dictionary<string, bool> documenttypeDict = GetDocumentType();
             List<Paper> paperlist = new List<Paper>();
             for (int index = 0; index < filenames.Length; index++)
             {
-                paperlist.AddRange(Paper.Read(filenames[index]));
+                if (documenttypeDict.Keys.Count > 0)
+                {
+                    paperlist.AddRange(Paper.Read(filenames[index]).FindAll(x => documenttypeDict.ContainsKey(x.DT.ToLower())));
+                }
+                else
+                {
+                    paperlist.AddRange(Paper.Read(filenames[index]));
+
+                }
+
             }
             return paperlist;
         }
@@ -273,7 +283,7 @@ namespace ESIPaperFilter
             }
             string categoryname = cbxCategorys.SelectedItem.ToString();
             List<Paper> _paperlist = paperlist.FindAll(x => x.Category != null);
-                _paperlist=_paperlist.FindAll(x=> x.Category.ToLower() == categoryname.ToLower());
+            _paperlist = _paperlist.FindAll(x => x.Category.ToLower() == categoryname.ToLower());
             if (chbExport.Checked)
             {
                 //分文件导出
@@ -358,9 +368,33 @@ namespace ESIPaperFilter
             cbxCategorys.SelectedItem = "全部";
         }
 
-        private void cbxExportAll_CheckedChanged(object sender, EventArgs e)
+        private Dictionary<string, bool> GetDocumentType()
         {
 
+            string path = "DocumentType.dict";
+            if (File.Exists(path))
+            {
+                string[] lines = File.ReadAllLines(path);
+                Dictionary<string, bool> dict = new Dictionary<string, bool>(lines.Length);
+
+                foreach (var line in lines)
+                {
+                    dict.Add(line.Trim().ToLower(), true);
+                }
+                return dict;
+            }
+            else
+            {
+                return new Dictionary<string, bool>();
+            }
+        }
+
+
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            View view = new View();
+            view.PaperList = paperlist;
+            view.ShowDialog();
         }
     }
     class PaperComparer : EqualityComparer<Paper>

@@ -15,6 +15,7 @@ namespace ESIPaperFilter.Code
         public string SO { set; get; }
         public string SN { set; get; }
         public int PY { set; get; }
+        public string DT { set; get; }
         public int TC { set; get; }
         public int Z9 { set; get; }
         public bool IsMark { set; get; }
@@ -66,6 +67,10 @@ namespace ESIPaperFilter.Code
                     if (prefix == "SO")
                     {
                         paper.SO = line.Substring(2).Trim();
+                    }
+                    if (prefix == "DT")
+                    {
+                        paper.DT = line.Substring(2).Trim();
                     }
                     if (prefix == "PY")
                     {

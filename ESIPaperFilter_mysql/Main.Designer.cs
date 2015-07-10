@@ -55,6 +55,7 @@
             this.cbxCategorys = new System.Windows.Forms.ComboBox();
             this.lblTotalCount = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.btnView = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudMonth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudYear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -231,14 +232,14 @@
             // 导入ToolStripMenuItem
             // 
             this.导入ToolStripMenuItem.Name = "导入ToolStripMenuItem";
-            this.导入ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.导入ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.导入ToolStripMenuItem.Text = "查看";
             this.导入ToolStripMenuItem.Click += new System.EventHandler(this.导入ToolStripMenuItem_Click);
             // 
             // 查看ToolStripMenuItem
             // 
             this.查看ToolStripMenuItem.Name = "查看ToolStripMenuItem";
-            this.查看ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.查看ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.查看ToolStripMenuItem.Text = "导入";
             this.查看ToolStripMenuItem.Click += new System.EventHandler(this.查看ToolStripMenuItem_Click);
             // 
@@ -326,11 +327,22 @@
             this.label6.TabIndex = 27;
             this.label6.Text = "学科";
             // 
+            // btnView
+            // 
+            this.btnView.Location = new System.Drawing.Point(714, 62);
+            this.btnView.Name = "btnView";
+            this.btnView.Size = new System.Drawing.Size(75, 23);
+            this.btnView.TabIndex = 28;
+            this.btnView.Text = "统计";
+            this.btnView.UseVisualStyleBackColor = true;
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 594);
+            this.Controls.Add(this.btnView);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.lblTotalCount);
             this.Controls.Add(this.cbxCategorys);
@@ -397,5 +409,6 @@
         private System.Windows.Forms.ComboBox cbxCategorys;
         private System.Windows.Forms.Label lblTotalCount;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnView;
     }
 }
