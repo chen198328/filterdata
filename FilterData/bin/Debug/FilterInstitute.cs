@@ -789,9 +789,6 @@ namespace FilterData
             }
 
         }
-
-
-
         private PaperList FilterPaperList(PaperList paperlist, List<List<string>> filters)
         {
             foreach (Paper paper in paperlist.paperlist)

@@ -36,7 +36,7 @@ namespace ESIPaperFilter
         }
         private void ViewData_Load(object sender, EventArgs e)
         {
-            List<string> years = GetList("select distinct [year] from [MasteJournalList]");
+            List<string> years = GetList("select distinct year from MasteJournalList");
             cbbYear.Items.Clear();
             years.ForEach(p =>
             {
@@ -49,7 +49,7 @@ namespace ESIPaperFilter
         private void cbbYear_SelectedIndexChanged(object sender, EventArgs e)
         {
             string year = cbbYear.SelectedItem.ToString();
-            string sql = "select distinct [month] from [MasteJournalList] where [year]=" + year;
+            string sql = "select distinct month from MasteJournalList where year=" + year;
             List<string> months = GetList(sql);
             cbbMonth.Items.Clear();
             months.ForEach(p =>
@@ -64,7 +64,7 @@ namespace ESIPaperFilter
         {
             string year = cbbYear.SelectedItem.ToString();
             string month = cbbMonth.SelectedItem.ToString();
-            string sql = string.Format("select distinct [category] from [MasteJournalList] where [year]={0} and [month]={1}", year, month);
+            string sql = string.Format("select distinct category from MasteJournalList where year={0} and month={1}", year, month);
             List<string> categorys = GetList(sql);
             cbbCategoryList.Items.Clear();
             cbbCategoryList.Items.Add("全部");
@@ -81,7 +81,7 @@ namespace ESIPaperFilter
             string year = cbbYear.SelectedItem as string;
             string month = cbbMonth.SelectedItem as string;
             string category = cbbCategoryList.SelectedItem as string;
-            string sql = string.Format("select id,fulltitle,title20,title29,issn,eissn from [MasteJournalList] where [year]={0} and [month]='{1}' ", year, month);
+            string sql = string.Format("select id,fulltitle,title20,title29,issn,eissn from MasteJournalList where year={0} and month='{1}' ", year, month);
             if (category != "全部")
             {
                 sql += " and [category]='" + category + "'";
@@ -99,7 +99,7 @@ namespace ESIPaperFilter
                 return;
             string id = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
             string columnname = dataGridView1.Columns[e.ColumnIndex].DataPropertyName;
-            string sql = string.Format("update [MasteJournalList] set {0}='{1}' where [id]={2}", columnname, dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(), id);
+            string sql = string.Format("update [MasteJournalList] set {0}='{1}' where id={2}", columnname, dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(), id);
             SqlHelper.ExecteNonQuery(CommandType.Text, sql);
 
         }

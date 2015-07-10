@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilterTest", "FilterTest\Fi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESIPaperFilter", "ESIPaperFilter\ESIPaperFilter.csproj", "{88C9E7DA-35C4-4868-8AA7-6389CEEF106C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_ESIPaperFilter", "ESIPaperFilter_mysql\_ESIPaperFilter.csproj", "{2C3E151A-372F-4C13-8F0E-56CAE76ED9A3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{88C9E7DA-35C4-4868-8AA7-6389CEEF106C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88C9E7DA-35C4-4868-8AA7-6389CEEF106C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88C9E7DA-35C4-4868-8AA7-6389CEEF106C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C3E151A-372F-4C13-8F0E-56CAE76ED9A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C3E151A-372F-4C13-8F0E-56CAE76ED9A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C3E151A-372F-4C13-8F0E-56CAE76ED9A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C3E151A-372F-4C13-8F0E-56CAE76ED9A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

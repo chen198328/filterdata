@@ -156,7 +156,7 @@ namespace ESIPaperFilter
                 {
                     string sql = string.Empty;
 
-                    sql = string.Format("select ISSN,EISSN,FullTitle,Title20,Title29 from [MasteJournalList] where ([issn]='{0}' or [eissn]='{0}' or [fulltitle]='{1}' or [title29]='{2}' or  [title20]='{2}'", p.SN, p.SO, p.J9);
+                    sql = string.Format("select ISSN,EISSN,FullTitle,Title20,Title29 from MasteJournalList where (issn='{0}' or eissn='{0}' or fulltitle='{1}' or title29='{2}' or  title20='{2}'", p.SN, p.SO, p.J9);
                     if (!cbxExportAll.Checked)
                     {
                         sql += " and [year]=" + year + " and [month]=" + month;
@@ -339,7 +339,7 @@ namespace ESIPaperFilter
         private void Main_Load(object sender, EventArgs e)
         {
             cbxCategorys.Items.Clear();
-            string sql = "select distinct category from [MasteJournalList]";
+            string sql = "select distinct category from MasteJournalList";
             IDataReader ireader = SqlHelper.ExecuteReader(SqlHelper.connectionString, CommandType.Text, sql);
             cbxCategorys.Items.Add("全部");
             while (ireader.Read())

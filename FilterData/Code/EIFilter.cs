@@ -63,7 +63,7 @@ namespace FilterData.Code
             {
                 if (!string.IsNullOrEmpty(field))
                 {
-                    string key=GetParentInstitute(field);
+                    string key = GetParentInstitute(field);
                     //此处用于处理一级机构去重问题
                     if (distinct.ContainsKey(key.ToLower()))
                     {
@@ -112,14 +112,17 @@ namespace FilterData.Code
                         break;
                     }
                 }
-                if (lines[pos].ToLower().Trim().StartsWith("ltd"))
+                if (pos > 0 && lines[pos].ToLower().Trim().StartsWith("ltd"))
                 {
-                    return lines[pos - 1] + ", " + lines[pos];
+                    //return lines[pos - 1] + ", " + lines[pos];
+                    Console.WriteLine(lines[pos - 1] + ", " + lines[pos]);
                 }
                 else
                 {
-                    return lines[pos].Trim();
+                    //return lines[pos].Trim();
+                    Console.WriteLine(lines[pos].Trim());
                 }
+                return lines[pos].Trim();
             }
         }
         /// <summary>
